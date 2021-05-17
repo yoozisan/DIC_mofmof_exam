@@ -18,6 +18,7 @@ before_action :set_property, only: [:show, :edit, :update, :destroy]
   end
 
   def edit
+    @property.nearest_stations.build
   end
 
   def create

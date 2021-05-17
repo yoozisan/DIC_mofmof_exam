@@ -25,7 +25,7 @@
 
   <div class="station_form">
     <% n = 0 %>
-    <%= f.fields_for :nearest_stations do |near| %>
+    <%= form.fields_for :nearest_stations do |near| %>
       <h2>最寄り駅<%= n += 1 %></h2>
       <%= near.label :路線名 %><br>
       <%= near.text_field :route %><br>
@@ -33,6 +33,7 @@
       <%= near.text_field :station %><br>
       <%= near.label :徒歩分数 %><br>
       <%= near.text_field :time %><br>
+    <% end %>
   </div>
 　<%= form.submit %>
 <% end %>
