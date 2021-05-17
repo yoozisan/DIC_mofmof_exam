@@ -6,7 +6,12 @@ before_action :set_property, only: [:show, :edit, :update, :destroy]
   end
 
   def new
-		@property = Property.new
+    if params[:back]
+		  @property = Property.new(property_params)
+    else
+      @property = Property.new
+      2.times { @property.nearest_stations.build }
+    end
   end
 
   def show
@@ -49,7 +54,7 @@ before_action :set_property, only: [:show, :edit, :update, :destroy]
 
   private
   def property_params
-    params.require(:property).permit(:name, :rent, :address, :year, :memo)
+    params.require(:property).permit(:name, :rent, :address, :year, :memo, nearest_stations_attributes:[:id, :station, :route, :time])
   end
 
   def set_property
