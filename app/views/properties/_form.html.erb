@@ -1,0 +1,35 @@
+<%= form_with(model: @property, local: true ,url: choose_new_or_edit ) do |form| %>
+<% if @property.errors.any? %>
+　<div id="error_explanation">
+　　<h2><%= @property.errors.count %>件のエラーがあります。</h2>
+　　<ul>
+　　<% @property.errors.full_messages.each do |msg| %>
+　　　<li><%= msg %></li>
+　　<% end %>
+　　</ul>
+　</div>
+<% end %>
+
+  <div class="property_name">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="property_rent">
+    <%= form.label :content %>
+    <%= form.text_field :rent %>
+  </div>
+  <div class="property_address">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+  <div class="property_year">
+    <%= form.label :year %>
+    <%= form.text_field :year %>
+  </div>
+  <div class="property_memo">
+    <%= form.label :memo %>
+    <%= form.text_field :memo %>
+  </div>
+　<%= form.submit %>
+<% end %>
+<%= link_to "物件一覧画面にもどる", properties_path %>
