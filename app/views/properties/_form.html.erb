@@ -10,25 +10,29 @@
 　</div>
 <% end %>
 
-  <div class="property_name">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="property_form">
+    <%= form.label :物件名 %><br>
+    <%= form.text_field :name %><br>
+    <%= form.label :賃料 %><br>
+    <%= form.text_field :rent %><br>
+    <%= form.label :住所 %><br>
+    <%= form.text_field :address %><br>
+    <%= form.label :築年数 %><br>
+    <%= form.text_field :year %><br>
+    <%= form.label :備考 %><br>
+    <%= form.text_area :memo %><br>
   </div>
-  <div class="property_rent">
-    <%= form.label :content %>
-    <%= form.text_field :rent %>
-  </div>
-  <div class="property_address">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-  <div class="property_year">
-    <%= form.label :year %>
-    <%= form.text_field :year %>
-  </div>
-  <div class="property_memo">
-    <%= form.label :memo %>
-    <%= form.text_field :memo %>
+
+  <div class="station_form">
+    <% n = 0 %>
+    <%= f.fields_for :nearest_stations do |near| %>
+      <h2>最寄り駅<%= n += 1 %></h2>
+      <%= near.label :路線名 %><br>
+      <%= near.text_field :route %><br>
+      <%= near.label :駅名 %><br>
+      <%= near.text_field :station %><br>
+      <%= near.label :徒歩分数 %><br>
+      <%= near.text_field :time %><br>
   </div>
 　<%= form.submit %>
 <% end %>

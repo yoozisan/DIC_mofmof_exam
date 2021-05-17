@@ -8,12 +8,13 @@
     <th>築年数</th>
     <th>備考</th>
 　</tr>
+
 <% @properties.each do |property| %>
   <tr>
     <td><%= property.name %></td>
-    <td><%= property.rent %></td>
+    <td><%= property.rent.to_s(:delimited) %>円</td>
     <td><%= property.address %></td>
-    <td><%= property.year %></td>
+    <td><%= property.year %>年</td>
     <td><%= property.memo %></td>
     <td><%= link_to "詳細", property_path(property.id) %></td>
     <td><%= link_to "編集", edit_property_path(property.id), data: { confirm: '本当に編集していいですか？' } %></td>
@@ -21,4 +22,7 @@
   </tr>
 <% end %>
 </table>
+
+<br>
+
 <%= link_to '新しく物件を投稿する', new_property_path %>
