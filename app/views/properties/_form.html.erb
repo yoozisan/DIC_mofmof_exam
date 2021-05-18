@@ -1,0 +1,40 @@
+<%= form_with(model: @property, local: true ,url: choose_new_or_edit ) do |form| %>
+<% if @property.errors.any? %>
+　<div id="error_explanation">
+　　<h2><%= @property.errors.count %>件のエラーがあります。</h2>
+　　<ul>
+　　<% @property.errors.full_messages.each do |msg| %>
+　　　<li><%= msg %></li>
+　　<% end %>
+　　</ul>
+　</div>
+<% end %>
+
+  <div class="property_form">
+    <%= form.label :物件名 %><br>
+    <%= form.text_field :name %><br>
+    <%= form.label :賃料 %><br>
+    <%= form.text_field :rent %><br>
+    <%= form.label :住所 %><br>
+    <%= form.text_field :address %><br>
+    <%= form.label :築年数 %><br>
+    <%= form.text_field :year %><br>
+    <%= form.label :備考 %><br>
+    <%= form.text_area :memo %><br>
+  </div>
+
+  <div class="station_form">
+    <% n = 0 %>
+    <%= form.fields_for :nearest_stations do |near| %>
+      <h2>最寄り駅<%= n += 1 %></h2>
+      <%= near.label :路線名 %><br>
+      <%= near.text_field :route %><br>
+      <%= near.label :駅名 %><br>
+      <%= near.text_field :station %><br>
+      <%= near.label :徒歩分数 %><br>
+      <%= near.text_field :time %><br>
+    <% end %>
+  </div>
+　<%= form.submit %>
+<% end %>
+<%= link_to "物件一覧画面にもどる", properties_path %>
